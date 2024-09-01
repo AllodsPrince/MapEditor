@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DBD8A432-1F98-4A84-9F8D-BCC27007638A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapEditor</RootNamespace>
+    <AssemblyName>MapEditor</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EditorControls">
+      <HintPath>..\..\..\debug\game\bin\EditorControls.dll</HintPath>
+    </Reference>
+    <Reference Include="EditorTools">
+      <HintPath>..\..\..\debug\game\bin\EditorTools.dll</HintPath>
+    </Reference>
+    <Reference Include="EditorWin32">
+      <HintPath>..\..\..\debug\game\bin\EditorWin32.dll</HintPath>
+    </Reference>
+    <Reference Include="LauncherTools">
+      <HintPath>..\..\..\debug\game\bin\LauncherTools.dll</HintPath>
+    </Reference>
+    <Reference Include="libdb_cs">
+      <HintPath>..\..\..\debug\game\bin\libdb_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="LoggerCs">
+      <HintPath>..\..\..\debug\game\bin\LoggerCs.dll</HintPath>
+    </Reference>
+    <Reference Include="ModelEditor">
+      <HintPath>..\..\..\debug\game\bin\ModelEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="RcsCs">
+      <HintPath>..\..\..\debug\game\bin\RcsCs.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLI.cs" />
+    <Compile Include="CLIParams.cs" />
+    <Compile Include="EditorSceneParams.cs" />
+    <Compile Include="EditorSceneState.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Forms\About\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CameraFOV\CameraFOVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CameraFOV\CameraFOVForm.Designer.cs">
+      <DependentUpon>CameraFOVForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CameraSpeed\CameraSpeedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CameraSpeed\CameraSpeedForm.Designer.cs">
+      <DependentUpon>CameraSpeedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Checkers\CheckersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Checkers\CheckersForm.Designer.cs">
+      <DependentUpon>CheckersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CollectionBrowser\CollectionBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CollectionBrowser\CollectionBrowser.Designer.cs">
+      <DependentUpon>CollectionBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CollectionBrowser\DataProviders\CollectionBrowserParams.cs" />
+    <Compile Include="Forms\CollectionBrowser\DataProviders\ICollectionBrowserParams.cs" />
+    <Compile Include="Forms\CreateMimimap\CreateMinimapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateMimimap\CreateMinimapForm.Designer.cs">
+      <DependentUpon>CreateMinimapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExtendedSoundBrowser\ExtendedSoundBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExtendedSoundBrowser\ExtendedSoundBrowserForm.Designer.cs">
+      <DependentUpon>ExtendedSoundBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FactionEditor\FactionEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FactionEditor\FactionEditorForm.Designer.cs">
+      <DependentUpon>FactionEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Game\GameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Game\GameForm.Designer.cs">
+      <DependentUpon>GameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GridStep\GridStepForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GridStep\GridStepForm.Designer.cs">
+      <DependentUpon>GridStepForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Groups\FindObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Groups\FindObjectForm.Designer.cs">
+      <DependentUpon>FindObjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Groups\GroupsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Groups\GroupsForm.Designer.cs">
+      <DependentUpon>GroupsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Groups\GroupTreeController.cs" />
+    <Compile Include="Forms\Groups\NodeColorInfo.cs" />
+    <Compile Include="Forms\Groups\NodeStorage.cs" />
+    <Compile Include="Forms\Groups\TreeViewWithMultiselection.cs" />
+    <Compile Include="Forms\HiddenObjects\HiddenObjectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HiddenObjects\HiddenObjectsForm.Designer.cs">
+      <DependentUpon>HiddenObjectsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HSVColorEditor\HSVColorEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HSVColorEditor\HSVColorEditorForm.Designer.cs">
+      <DependentUpon>HSVColorEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ImportCues\ImportCuesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ImportCues\ImportCuesForm.Designer.cs">
+      <DependentUpon>ImportCuesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Layers\InputBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Layers\InputBoxForm.Designer.cs">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Layers\Layers.cs" />
+    <Compile Include="Forms\Layers\LayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Layers\LayersForm.Designer.cs">
+      <DependentUpon>LayersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LightEditor\Checker.cs" />
+    <Compile Include="Forms\LightEditor\ColorValidator.cs" />
+    <Compile Include="Forms\LightEditor\DBIDValidator.cs" />
+    <Compile Include="Forms\LightEditor\FogChecker.cs" />
+    <Compile Include="Forms\LightEditor\LightEditor.cs" />
+    <Compile Include="Forms\LightEditor\LightEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LightEditor\LightEditorForm.Designer.cs">
+      <DependentUpon>LightEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LightEditor\TextFloatValidator.cs" />
+    <Compile Include="Forms\LightEditor\TextHoursValidator.cs" />
+    <Compile Include="Forms\LightEditor\TimeChecker.cs" />
+    <Compile Include="Forms\LightEditor\Validator.cs" />
+    <Compile Include="Forms\List\ListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\List\ListForm.Designer.cs">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Log\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Log\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Minimap\MinimapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Minimap\MinimapForm.Designer.cs">
+      <DependentUpon>MinimapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobScripts\CustomFieldsWrapper.cs" />
+    <Compile Include="Forms\MobScripts\Dialogs\LoadDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MobScripts\Dialogs\LoadDialogForm.Designer.cs">
+      <DependentUpon>LoadDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobScripts\MobScriptsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MobScripts\MobScriptsForm.Designer.cs">
+      <DependentUpon>MobScriptsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobScripts\MobScriptWrapper.cs" />
+    <Compile Include="Forms\MobScripts\RandomSayActionPair.cs" />
+    <Compile Include="Forms\MobScripts\SayActionListControl.cs" />
+    <Compile Include="Forms\MobTable\MobTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MobTable\MobTableForm.Designer.cs">
+      <DependentUpon>MobTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ModelViewer\ModelViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ModelViewer\ModelViewerForm.Designer.cs">
+      <DependentUpon>ModelViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ModelViewer\ModelViewerScene.cs" />
+    <Compile Include="Forms\ModelViewer\ModelViewerState.cs" />
+    <Compile Include="Forms\MultiObjectBrowser\MultiObjectBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MultiObjectBrowser\MultiObjectBrowserForm.Designer.cs">
+      <DependentUpon>MultiObjectBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Notification\NotificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Notification\NotificationForm.Designer.cs">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ObjectEditor\ObjectEditorCameraParams.cs" />
+    <Compile Include="Forms\ObjectEditor\ObjectEditorEditState.cs" />
+    <Compile Include="Forms\ObjectEditor\ObjectEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ObjectEditor\ObjectEditorForm.Designer.cs">
+      <DependentUpon>ObjectEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ObjectEditor\ObjectEditorMap.cs" />
+    <Compile Include="Forms\ObjectsBrowser\ObjectsBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ObjectsBrowser\ObjectsBrowserForm.Designer.cs">
+      <DependentUpon>ObjectsBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ObjectSetBrowser\ObjectSetBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ObjectSetBrowser\ObjectSetBrowserForm.Designer.cs">
+      <DependentUpon>ObjectSetBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PropertyControl\ExtendedPropertyControl\ExtendedPropertyControl.cs" />
+    <Compile Include="Forms\PropertyControl\PropertyControlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PropertyControl\PropertyControlForm.Designer.cs">
+      <DependentUpon>PropertyControlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Property\PropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Property\PropertiesForm.Designer.cs">
+      <DependentUpon>PropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\AddQuestDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\AddQuestDialog.Designer.cs">
+      <DependentUpon>AddQuestDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\DBIDSubstringPredicate.cs" />
+    <Compile Include="Forms\Quests\ImportExport.cs" />
+    <Compile Include="Forms\Quests\QuestDiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestDiagramForm.Designer.cs">
+      <DependentUpon>QuestDiagramForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestEditor.cs" />
+    <Compile Include="Forms\Quests\QuestEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestEditorForm.Designer.cs">
+      <DependentUpon>QuestEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestEditorZoneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestEditorZoneForm.Designer.cs">
+      <DependentUpon>QuestEditorZoneForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestEnvironment.cs" />
+    <Compile Include="Forms\Quests\QuestImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestImportForm.Designer.cs">
+      <DependentUpon>QuestImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestLine\QuestLineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestLine\QuestLineForm.Designer.cs">
+      <DependentUpon>QuestLineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestSelectDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuestSelectDialogForm.Designer.cs">
+      <DependentUpon>QuestSelectDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\BindExploitToCounterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\BindExploitToCounterForm.Designer.cs">
+      <DependentUpon>BindExploitToCounterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateDeviceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateDeviceForm.Designer.cs">
+      <DependentUpon>CreateDeviceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateMobForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateMobForm.Designer.cs">
+      <DependentUpon>CreateMobForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateNPCForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateNPCForm.Designer.cs">
+      <DependentUpon>CreateNPCForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateQuestItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\CreateQuestItemForm.Designer.cs">
+      <DependentUpon>CreateQuestItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\DialogForms\SelectIconDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\DialogForms\SelectIconDialogForm.Designer.cs">
+      <DependentUpon>SelectIconDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\DialogForms\ZoneCreatureListDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\DialogForms\ZoneCreatureListDialogForm.Designer.cs">
+      <DependentUpon>ZoneCreatureListDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\QuickObjectGenerator\ObjectGeneratorConfig.cs" />
+    <Compile Include="Forms\Quests\SelectRankDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\SelectRankDialogForm.Designer.cs">
+      <DependentUpon>SelectRankDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Quests\SetLocatorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Quests\SetLocatorsForm.Designer.cs">
+      <DependentUpon>SetLocatorsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RoadParamsBrowser\RoadParamsBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoadParamsBrowser\RoadParamsBrowserForm.Designer.cs">
+      <DependentUpon>RoadParamsBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RouteObjectBrowser\RouteObjectBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RouteObjectBrowser\RouteObjectBrowserForm.Designer.cs">
+      <DependentUpon>RouteObjectBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RouteObjectBrowser\ShipComposer\ShipComposerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RouteObjectBrowser\ShipComposer\ShipComposerForm.Designer.cs">
+      <DependentUpon>ShipComposerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ScriptEditor\ScriptEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScriptEditor\ScriptEditorForm.Designer.cs">
+      <DependentUpon>ScriptEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServerLuncher\ServerLuncherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServerLuncher\ServerLuncherForm.Designer.cs">
+      <DependentUpon>ServerLuncherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SoundStaticObject\SoundStaticObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SoundStaticObject\SoundStaticObjectForm.Designer.cs">
+      <DependentUpon>SoundStaticObjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Time\TimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Time\TimeForm.Designer.cs">
+      <DependentUpon>TimeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tool\ToolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Tool\ToolForm.Designer.cs">
+      <DependentUpon>ToolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TypedObjectsBrowser\DataProviders\ClientSpawnTableParams.cs" />
+    <Compile Include="Forms\TypedObjectsBrowser\DataProviders\ScriptZoneParams.cs" />
+    <Compile Include="Forms\TypedObjectsBrowser\DataProviders\SpawnTableParams.cs" />
+    <Compile Include="Forms\TypedObjectsBrowser\DataProviders\TypedObjectParams.cs" />
+    <Compile Include="Forms\TypedObjectsBrowser\TypedObjectsBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TypedObjectsBrowser\TypedObjectsBrowserForm.Designer.cs">
+      <DependentUpon>TypedObjectsBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnselectableObjects\UnselectableObjectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnselectableObjects\UnselectableObjectsForm.Designer.cs">
+      <DependentUpon>UnselectableObjectsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Water\WaterEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Water\WaterEditorForm.Designer.cs">
+      <DependentUpon>WaterEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI.cs" />
+    <Compile Include="GUIParams.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapEditorModule.cs" />
+    <Compile Include="Map\Constants.cs" />
+    <Compile Include="Map\Containers\AstralBorderContainer.cs" />
+    <Compile Include="Map\Containers\ClientPatrolNodeContainer.cs" />
+    <Compile Include="Map\Containers\ClientSpawnPointContainer.cs" />
+    <Compile Include="Map\Containers\ExtendedSoundContainer.cs" />
+    <Compile Include="Map\Containers\GraveyardContainer.cs" />
+    <Compile Include="Map\Containers\LinkCollector.cs" />
+    <Compile Include="Map\Containers\MapEditorMapObjectContainer.cs" />
+    <Compile Include="Map\Containers\MapLocatorContainer.cs" />
+    <Compile Include="Map\Containers\PatrolNodeContainer.cs" />
+    <Compile Include="Map\Containers\PermanentDeviceContainer.cs" />
+    <Compile Include="Map\Containers\PlayerRespawnPlaceContainer.cs" />
+    <Compile Include="Map\Containers\ProjectileContainer.cs" />
+    <Compile Include="Map\Containers\RouteObjectContainer.cs" />
+    <Compile Include="Map\Containers\RoutePointContainer.cs" />
+    <Compile Include="Map\Containers\SanctuaryContainer.cs" />
+    <Compile Include="Map\Containers\ScriptAreaContainer.cs" />
+    <Compile Include="Map\Containers\SpawnPointContainer.cs" />
+    <Compile Include="Map\Containers\StartPointContainer.cs" />
+    <Compile Include="Map\Containers\StaticObjectContainer.cs" />
+    <Compile Include="Map\Containers\TypedMapObjectContainer.cs" />
+    <Compile Include="Map\Containers\ZoneLocatorContainer.cs" />
+    <Compile Include="Map\ContinentType.cs" />
+    <Compile Include="Map\DataProviders\DBObjectItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeClipboardItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeClipboardItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeHeightmapItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeHeightmapItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeHillItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeHillItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeProfileItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeProfileItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeRoadItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeRoadItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeTileItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeTileItemSource.cs" />
+    <Compile Include="Map\DataProviders\LandscapeWaterItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LandscapeWaterItemSource.cs" />
+    <Compile Include="Map\DataProviders\LightItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\LightItemListSource.cs" />
+    <Compile Include="Map\DataProviders\MapZoneItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\MapZoneItemListSource.cs" />
+    <Compile Include="Map\DataProviders\MultiObjectItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\MultiObjectItemListSource.cs" />
+    <Compile Include="Map\DataProviders\ObjectSetItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\ObjectSetItemListSource.cs" />
+    <Compile Include="Map\DataProviders\RoadItemSetItemListSource.cs" />
+    <Compile Include="Map\DataProviders\SoundItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\SoundItemListSource.cs" />
+    <Compile Include="Map\DataProviders\StaticObjectItemDataMiner.cs" />
+    <Compile Include="Map\DataProviders\StaticObjectItemListSource.cs" />
+    <Compile Include="Map\Dialogs\AddFixedIdleAnimationTunerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\AddFixedIdleAnimationTunerForm.Designer.cs">
+      <DependentUpon>AddFixedIdleAnimationTunerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\CloneSpawnTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\CloneSpawnTableForm.Designer.cs">
+      <DependentUpon>CloneSpawnTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\CreateSpawnTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\CreateSpawnTableForm.Designer.cs">
+      <DependentUpon>CreateSpawnTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\CreateSpawnTunerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\CreateSpawnTunerForm.Designer.cs">
+      <DependentUpon>CreateSpawnTunerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\FillHeightsFromHeightmapDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\FillHeightsFromHeightmapDialog.Designer.cs">
+      <DependentUpon>FillHeightsFromHeightmapDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\MapDialogControl.cs" />
+    <Compile Include="Map\Dialogs\MoveCameraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\MoveCameraForm.Designer.cs">
+      <DependentUpon>MoveCameraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Dialogs\OpenMapDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Map\Dialogs\OpenMapDialog.Designer.cs">
+      <DependentUpon>OpenMapDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Map\Landscape\ClipboardLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\ClipboardOperationType.cs" />
+    <Compile Include="Map\Landscape\GradientLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\HeightLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\HeightPickerLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\HillLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\MapEditorLandscapeToolContainer.cs" />
+    <Compile Include="Map\Landscape\MapEditorLandscapeToolFactory.cs" />
+    <Compile Include="Map\Landscape\RoadLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\TileLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\TilePickerLandscapeTool.cs" />
+    <Compile Include="Map\Landscape\WaterLandscapeTool.cs" />
+    <Compile Include="Map\MapCheckers\CMapCheckerHost.cs" />
+    <Compile Include="Map\MapCheckers\DirectoryPatchHost.cs" />
+    <Compile Include="Map\MapCheckers\IMapChecker.cs" />
+    <Compile Include="Map\MapCheckers\LongInfoViewNode.cs" />
+    <Compile Include="Map\MapCheckers\MapChecker.cs" />
+    <Compile Include="Map\MapCheckers\MapCheckerContainer.cs" />
+    <Compile Include="Map\MapCheckers\MapCheckerHelper.cs" />
+    <Compile Include="Map\MapCheckers\MapCheckerStatus.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\EditorSceneChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\GraveyardFactionCheker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\GraveyardVendorCheker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\LinksCheker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\MapObjectCountChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\MapObjectTypeChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\OutOfTerrainChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\PassabilityChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\PatchTerrainBorderChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\PatrolNodeTypeChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\PermanentDeviceTypeChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\PositionChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\RabbitChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\RoutePointTypeChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\ScanRadiusUsageChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\ScriptIDChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\ShipTourChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\SpawnPointTypeChecker.cs" />
+    <Compile Include="Map\MapCheckers\SpecificCheckers\SpecialMapObjectCountChecker.cs" />
+    <Compile Include="Map\MapCheckers\TotalMapCheck.cs" />
+    <Compile Include="Map\MapEditorMap.cs" />
+    <Compile Include="Map\MapObjectElements\ChangeSingleSpawnControllerFieldOperation.cs" />
+    <Compile Include="Map\MapObjectElements\ChangeSpawnTimeFieldOperation.cs" />
+    <Compile Include="Map\MapObjectElements\SingleSpawnController.cs" />
+    <Compile Include="Map\MapObjectElements\SingleSpawnControllerConverter.cs" />
+    <Compile Include="Map\MapObjectElements\SingleSpawnControllerOperationContainer.cs" />
+    <Compile Include="Map\MapObjectElements\SingleSpawnControllerOwner.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeAbstract.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeCommon.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeConverter.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeNever.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeOnce.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeOperationContainer.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeOwner.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimePatrol.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeQuest.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeRange.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeRare.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeSimple.cs" />
+    <Compile Include="Map\MapObjectElements\SpawnTimeTrash.cs" />
+    <Compile Include="Map\MapObjects\AstralBorder.cs" />
+    <Compile Include="Map\MapObjects\AstralBorderOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\AstralBorderPack.cs" />
+    <Compile Include="Map\MapObjects\ChangeAstralBorderStabilityRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeCircleSpawnPointDataRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientPatrolNodeSceneOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientPatrolNodeScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientSpawnPointDataFieldOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientSpawnPointDataOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientSpawnPointSceneOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientSpawnPointScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeClientSpawnPointVisObjectOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeCylinderScriptAreaDataHalfheightOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeCylinderScriptAreaDataRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeEllipseSpawnPointDataSemiaxisAOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeEllipseSpawnPointDataSemiaxisBOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeExtendedSoundCentralSoundOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeExtendedSoundNameOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeExtendedSoundSideSoundOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeFactionOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeMapLocatorScanRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeMapLocatorScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolLinkDataStartOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolLinkDataTypeOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolLinkDataWeightOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolNodeLabelOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolNodeScriptOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolSpawnPointDataLabelOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePatrolSpawnPointDataScriptOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePermanentDeviceAICollisionOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePermanentDeviceDeviceOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePermanentDeviceScanRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePermanentDeviceScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePlayerRespawnPlaceDeviceOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangePlayerRespawnPlaceFactionOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeProjectileDBIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeProjectileScanRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeProjectileScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeProjectileSpawnTimeOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRespawnMapZoneOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRespawnTypeOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointLabelOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointLatencyOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointRouteOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointScriptOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointSpeedOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeRoutePointTypeOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeScriptAreaDataOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeScriptAreaScanRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeScriptAreaScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeScriptAreaScriptZoneOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnCircleSpawnPointDataMultiplicityOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnCircleSpawnPointDataRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointDataOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointScanRadiusOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointScriptIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointSingleSpawnControllerOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointSpawnIDOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointSpawnTableOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointSpawnTimeOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeSpawnPointSpawnTunerOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeStartPointCharacterOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeStaticObjectAICollisionOperation.cs" />
+    <Compile Include="Map\MapObjects\ChangeZoneLocatorMapZoneOperation.cs" />
+    <Compile Include="Map\MapObjects\CircleSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\ClientPatrolNode.cs" />
+    <Compile Include="Map\MapObjects\ClientPatrolNodeLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\ClientPatrolNodeOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ClientPatrolNodePack.cs" />
+    <Compile Include="Map\MapObjects\ClientSpawnPoint.cs" />
+    <Compile Include="Map\MapObjects\ClientSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\ClientSpawnPointDataConverter.cs" />
+    <Compile Include="Map\MapObjects\ClientSpawnPointOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ClientSpawnPointPack.cs" />
+    <Compile Include="Map\MapObjects\CylinderScriptAreaData.cs" />
+    <Compile Include="Map\MapObjects\CylinderScriptAreaDataPack.cs" />
+    <Compile Include="Map\MapObjects\DeviceClientSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\EllipseSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSound.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSoundLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSoundOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSoundPack.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSoundParams.cs" />
+    <Compile Include="Map\MapObjects\ExtendedSoundSaveData.cs" />
+    <Compile Include="Map\MapObjects\Faction.cs" />
+    <Compile Include="Map\MapObjects\Graveyard.cs" />
+    <Compile Include="Map\MapObjects\GraveyardLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\GraveyardLinkData.cs" />
+    <Compile Include="Map\MapObjects\GraveyardPack.cs" />
+    <Compile Include="Map\MapObjects\GuardSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\IMapObjectInterfaceExtention.cs" />
+    <Compile Include="Map\MapObjects\LinkDataPack.cs" />
+    <Compile Include="Map\MapObjects\MapLocator.cs" />
+    <Compile Include="Map\MapObjects\MapLocatorOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\MapLocatorPack.cs" />
+    <Compile Include="Map\MapObjects\MapObjectFactory.cs" />
+    <Compile Include="Map\MapObjects\MapObjectInterface.cs" />
+    <Compile Include="Map\MapObjects\MobClientSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\MultiObjectSaver.cs" />
+    <Compile Include="Map\MapObjects\ObjectCreationRandomParams.cs" />
+    <Compile Include="Map\MapObjects\ObjectSetSaver.cs" />
+    <Compile Include="Map\MapObjects\PatrolLinkData.cs" />
+    <Compile Include="Map\MapObjects\PatrolNode.cs" />
+    <Compile Include="Map\MapObjects\PatrolNodeLinkType.cs" />
+    <Compile Include="Map\MapObjects\PatrolNodeOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\PatrolNodePack.cs" />
+    <Compile Include="Map\MapObjects\PatrolSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\PermanentDevice.cs" />
+    <Compile Include="Map\MapObjects\PermanentDeviceOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\PermanentDevicePack.cs" />
+    <Compile Include="Map\MapObjects\PlayerRespawnPlace.cs" />
+    <Compile Include="Map\MapObjects\PlayerRespawnPlaceOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\PlayerRespawnPlacePack.cs" />
+    <Compile Include="Map\MapObjects\Projectile.cs" />
+    <Compile Include="Map\MapObjects\ProjectileOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ProjectilePack.cs" />
+    <Compile Include="Map\MapObjects\Respawn.cs" />
+    <Compile Include="Map\MapObjects\RespawnOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\RespawnPack.cs" />
+    <Compile Include="Map\MapObjects\RespawnType.cs" />
+    <Compile Include="Map\MapObjects\RouteData.cs" />
+    <Compile Include="Map\MapObjects\RouteObject.cs" />
+    <Compile Include="Map\MapObjects\RoutePoint.cs" />
+    <Compile Include="Map\MapObjects\RoutePointLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\RoutePointOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\RoutePointPack.cs" />
+    <Compile Include="Map\MapObjects\RoutePointType.cs" />
+    <Compile Include="Map\MapObjects\RouteSaveData.cs" />
+    <Compile Include="Map\MapObjects\Sanctuary.cs" />
+    <Compile Include="Map\MapObjects\SanctuaryLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\SanctuaryLinkData.cs" />
+    <Compile Include="Map\MapObjects\SanctuaryPack.cs" />
+    <Compile Include="Map\MapObjects\ScriptArea.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaData.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaDataConverter.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaPack.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaType.cs" />
+    <Compile Include="Map\MapObjects\ScriptAreaTypeCollector.cs" />
+    <Compile Include="Map\MapObjects\SerializableMapObjectPack.cs" />
+    <Compile Include="Map\MapObjects\Sound.cs" />
+    <Compile Include="Map\MapObjects\SoundCollector.cs" />
+    <Compile Include="Map\MapObjects\SoundConverter.cs" />
+    <Compile Include="Map\MapObjects\SoundTypeEditor.cs" />
+    <Compile Include="Map\MapObjects\SpawnCircleSpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\SpawnPoint.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointData.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointDataConverter.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointLinkChecker.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointLinkCollector.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointLinkFilter.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointPack.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointType.cs" />
+    <Compile Include="Map\MapObjects\SpawnPointTypeCollector.cs" />
+    <Compile Include="Map\MapObjects\SpawnTableType.cs" />
+    <Compile Include="Map\MapObjects\SpawnTableTypeCollector.cs" />
+    <Compile Include="Map\MapObjects\StartPoint.cs" />
+    <Compile Include="Map\MapObjects\StartPointOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\StartPointPack.cs" />
+    <Compile Include="Map\MapObjects\StaticObject.cs" />
+    <Compile Include="Map\MapObjects\StaticObjectOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\StaticObjectPack.cs" />
+    <Compile Include="Map\MapObjects\ZoneLocator.cs" />
+    <Compile Include="Map\MapObjects\ZoneLocatorOperationContainer.cs" />
+    <Compile Include="Map\MapObjects\ZoneLocatorPack.cs" />
+    <Compile Include="Map\Minimap\MinimapContainer.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\AstralServerObjectsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\AstralSkyDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\ClientObjectsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\DBDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\ExtendedSoundsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\GenerateShadowsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\GraveyardsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\LightsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\MapResourceDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\MapZonesDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\MinimapDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\PostSceneDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\PreSceneDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\RoutePointsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\SanctuariesDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\SaveBackupData.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\SaveBackupDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\SoundDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\SpawnPointsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\StartPointsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\StartPositionDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\StaticObjectsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\TerrainDataSource.cs" />
+    <Compile Include="Map\SaveLoad\DataSources\ZoneLocatorsDataSource.cs" />
+    <Compile Include="Map\SaveLoad\SaveLoad.cs" />
+    <Compile Include="Map\States\ApplyToPatchState.cs" />
+    <Compile Include="Map\States\DistanceState.cs" />
+    <Compile Include="Map\States\IObjectsStateParams.cs" />
+    <Compile Include="Map\States\LandscapeState.cs" />
+    <Compile Include="Map\States\LightsState.cs" />
+    <Compile Include="Map\States\MapEditState.cs" />
+    <Compile Include="Map\States\MapState.cs" />
+    <Compile Include="Map\States\MapZonesState.cs" />
+    <Compile Include="Map\States\ObjectsState.cs" />
+    <Compile Include="Map\States\ObjectsStateParamsFieldChangedEvent.cs" />
+    <Compile Include="Map\States\PatchRegion.cs" />
+    <Compile Include="Map\States\PatchRegionType.cs" />
+    <Compile Include="Map\States\SoundState.cs" />
+    <Compile Include="Map\Variables.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources\Images\Images.cs" />
+    <Compile Include="Resources\Strings\Strings.cs" />
+    <Compile Include="Scene\EditingBlocker.cs" />
+    <Compile Include="Scene\LandscapeClipboardSelector.cs" />
+    <Compile Include="Scene\MapEditorScene.cs" />
+    <Compile Include="Scene\MapObjectClipboard.cs" />
+    <Compile Include="Scene\MapObjectLandscapeClipboard.cs" />
+    <Compile Include="Scene\MapObjectRowBuilder.cs" />
+    <Compile Include="Scene\MapObjectSelector.cs" />
+    <Compile Include="Scene\MapObjectSelectorOperationContainer.cs" />
+    <Compile Include="Scene\MapSceneParams.cs" />
+    <Compile Include="Scene\SelectMapObjectOperation.cs" />
+    <Compile Include="Scene\SelectMapObjectsOperation.cs" />
+    <Compile Include="Scene\Types\IMapSceneObjectTypeContainer.cs" />
+    <Compile Include="Scene\Types\MapEditorAggroCircles.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneAstralBorders.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneClientSpawnPoints.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneGraveyards.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneLinks.cs" />
+    <Compile Include="Scene\Types\MapEditorScenePlayerRespawnPoints.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneProjectiles.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneRouteObjects.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneRoutePoints.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneSanctuarys.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneScriptAreas.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneSpawnPoints.cs" />
+    <Compile Include="Scene\Types\MapEditorSceneZoneLocators.cs" />
+    <Compile Include="Scene\Types\MapSceneAllObjects.cs" />
+    <Compile Include="Scene\Types\MapSceneAxis.cs" />
+    <Compile Include="Scene\Types\MapSceneDynamicStatistic.cs" />
+    <Compile Include="Scene\Types\MapSceneFixTerrainTiles.cs" />
+    <Compile Include="Scene\Types\MapSceneLandscapeChanges.cs" />
+    <Compile Include="Scene\Types\MapSceneObjects.cs" />
+    <Compile Include="Scene\Types\MapSceneObjectTypeContainer.cs" />
+    <Compile Include="Scene\Types\MapScenePolygons.cs" />
+    <Compile Include="Scene\Types\MapSceneSquares.cs" />
+    <Compile Include="Scene\Types\MapSceneTerrainRegions.cs" />
+    <Compile Include="Scene\Types\MapSceneZones.cs" />
+    <Compile Include="Scene\Types\MapSounds.cs" />
+    <Compile Include="Scene\Types\ZoneLights.cs" />
+    <Compile Include="SplashScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreenForm.Designer.cs">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\About\AboutForm.resources" />
+    <EmbeddedResource Include="Forms\CameraFOV\CameraFOVForm.resources" />
+    <EmbeddedResource Include="Forms\CameraSpeed\CameraSpeedForm.resources" />
+    <EmbeddedResource Include="Forms\Checkers\CheckersForm.resources" />
+    <EmbeddedResource Include="Forms\CollectionBrowser\CollectionBrowser.resources" />
+    <EmbeddedResource Include="Forms\CreateMimimap\CreateMinimapForm.resources" />
+    <EmbeddedResource Include="Forms\ExtendedSoundBrowser\ExtendedSoundBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\FactionEditor\FactionEditorForm.resources" />
+    <EmbeddedResource Include="Forms\Game\GameForm.resources" />
+    <EmbeddedResource Include="Forms\GridStep\GridStepForm.resources" />
+    <EmbeddedResource Include="Forms\Groups\FindObjectForm.resources" />
+    <EmbeddedResource Include="Forms\Groups\GroupsForm.resources" />
+    <EmbeddedResource Include="Forms\HiddenObjects\HiddenObjectsForm.resources" />
+    <EmbeddedResource Include="Forms\HSVColorEditor\HSVColorEditorForm.resources" />
+    <EmbeddedResource Include="Forms\ImportCues\ImportCuesForm.resources" />
+    <EmbeddedResource Include="Forms\Layers\InputBoxForm.resources" />
+    <EmbeddedResource Include="Forms\Layers\LayersForm.resources" />
+    <EmbeddedResource Include="Forms\LightEditor\LightEditorForm.resources" />
+    <EmbeddedResource Include="Forms\List\ListForm.resources" />
+    <EmbeddedResource Include="Forms\Log\LogForm.resources" />
+    <EmbeddedResource Include="Forms\Minimap\MinimapForm.resources" />
+    <EmbeddedResource Include="Forms\MobScripts\Dialogs\LoadDialogForm.resources" />
+    <EmbeddedResource Include="Forms\MobScripts\MobScriptsForm.resources" />
+    <EmbeddedResource Include="Forms\MobScripts\SayActionListControl.resources" />
+    <EmbeddedResource Include="Forms\MobTable\MobTableForm.resources" />
+    <EmbeddedResource Include="Forms\ModelViewer\ModelViewerForm.resources" />
+    <EmbeddedResource Include="Forms\MultiObjectBrowser\MultiObjectBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\Notification\NotificationForm.resources" />
+    <EmbeddedResource Include="Forms\ObjectEditor\ObjectEditorForm.resources" />
+    <EmbeddedResource Include="Forms\ObjectsBrowser\ObjectsBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\ObjectSetBrowser\ObjectSetBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\PropertyControl\ExtendedPropertyControl\ExtendedPropertyControl.resources" />
+    <EmbeddedResource Include="Forms\PropertyControl\PropertyControlForm.resources" />
+    <EmbeddedResource Include="Forms\Property\PropertiesForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\AddQuestDialog.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestDiagramForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestEditorForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestEditorZoneForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestImportForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestLine\QuestLineForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuestSelectDialogForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\BindExploitToCounterForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\CreateDeviceForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\CreateMobForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\CreateNPCForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\CreateQuestItemForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\DialogForms\SelectIconDialogForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\QuickObjectGenerator\DialogForms\ZoneCreatureListDialogForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\SelectRankDialogForm.resources" />
+    <EmbeddedResource Include="Forms\Quests\SetLocatorsForm.resources" />
+    <EmbeddedResource Include="Forms\RoadParamsBrowser\RoadParamsBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\RouteObjectBrowser\RouteObjectBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\RouteObjectBrowser\ShipComposer\ShipComposerForm.resources" />
+    <EmbeddedResource Include="Forms\ScriptEditor\ScriptEditorForm.resources" />
+    <EmbeddedResource Include="Forms\ServerLuncher\ServerLuncherForm.resources" />
+    <EmbeddedResource Include="Forms\SoundStaticObject\SoundStaticObjectForm.resources" />
+    <EmbeddedResource Include="Forms\Time\TimeForm.resources" />
+    <EmbeddedResource Include="Forms\Tool\ToolForm.resources" />
+    <EmbeddedResource Include="Forms\TypedObjectsBrowser\TypedObjectsBrowserForm.resources" />
+    <EmbeddedResource Include="Forms\UnselectableObjects\UnselectableObjectsForm.resources" />
+    <EmbeddedResource Include="Forms\Water\WaterEditorForm.resources" />
+    <EmbeddedResource Include="MainForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\AddFixedIdleAnimationTunerForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\CloneSpawnTableForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\CreateSpawnTableForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\CreateSpawnTunerForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\FillHeightsFromHeightmapDialog.resources" />
+    <EmbeddedResource Include="Map\Dialogs\MapDialogControl.resources" />
+    <EmbeddedResource Include="Map\Dialogs\MoveCameraForm.resources" />
+    <EmbeddedResource Include="Map\Dialogs\OpenMapDialog.resources" />
+    <EmbeddedResource Include="Properties\Resources.resources" />
+    <EmbeddedResource Include="Resources\Images\Images.resources" />
+    <EmbeddedResource Include="Resources\Strings\Strings.resources" />
+    <EmbeddedResource Include="SplashScreenForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
